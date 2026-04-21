@@ -1,0 +1,35 @@
+<section class="details-card">
+  <div class="details-header">
+    <div>
+      <span class="badge">Produit #<%= produit.id %></span>
+      <h1><%= produit.nom %></h1>
+    </div>
+    <a href="/products" class="btn btn-secondary">Retour</a>
+  </div>
+
+  <div class="details-grid">
+    <div class="info-box">
+      <h3>Prix</h3>
+      <p><%= Number(produit.prix).toFixed(2) %> DH</p>
+    </div>
+
+    <div class="info-box">
+      <h3>Date d’ajout</h3>
+      <p><%= new Date(produit.date_creation).toLocaleString() %></p>
+    </div>
+
+    <div class="info-box full">
+      <h3>Description</h3>
+      <p><%= produit.description || 'Aucune description disponible.' %></p>
+    </div>
+  </div>
+
+  <div class="details-actions">
+    <a href="/products/<%= produit.id %>/edit" class="btn btn-edit">Modifier</a>
+    <form action="/products/<%= produit.id %>/delete" method="POST">
+      <button class="btn btn-delete" onclick="return confirm('Supprimer ce produit ?')">
+        Supprimer
+      </button>
+    </form>
+  </div>
+</section>

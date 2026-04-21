@@ -1,0 +1,44 @@
+<section class="hero">
+  <h1>Gestion des produits</h1>
+  <p>Consultez, ajoutez, modifiez ou supprimez les éléments du catalogue.</p>
+  <a href="/products/new" class="btn btn-primary">+ Nouveau produit</a>
+</section>
+
+<section class="card">
+  <% if (produits.length === 0) { %>
+    <p class="empty-state">Aucun produit enregistré pour le moment.</p>
+  <% } else { %>
+    <div class="table-box">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Date</th>
+            <th>Opérations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% produits.forEach(produit => { %>
+            <tr>
+              <td><%= produit.id %></td>
+              <td><%= produit.nom %></td>
+              <td><%= Number(produit.prix).toFixed(2) %> DH</td>
+              <td><%= new Date(produit.date_creation).toLocaleDateString() %></td>
+              <td class="actions">
+                <a class="btn btn-small btn-view" href="/products/<%= produit.id %>">Voir</a>
+                <a class="btn btn-small btn-edit" href="/products/<%= produit.id %>/edit">Modifier</a>
+                <form action="/products/<%= produit.id %>/delete" method="POST">
+                  <button class="btn btn-small btn-delete" onclick="return confirm('Confirmer la suppression ?')">
+                    Supprimer
+                  </button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</section>

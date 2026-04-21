@@ -1,0 +1,25 @@
+<section class="form-card">
+  <h1>Ajouter un produit</h1>
+
+  <form action="/products/new" method="POST" class="product-form">
+    <div class="form-group">
+      <label for="nom">Nom du produit</label>
+      <input type="text" id="nom" name="nom" required>
+    </div>
+
+    <div class="form-group">
+      <label for="prix">Prix</label>
+      <input type="number" id="prix" name="prix" step="0.01" min="0" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="5"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+      <a href="/products" class="btn btn-secondary">Annuler</a>
+    </div>
+  </form>
+</section>
